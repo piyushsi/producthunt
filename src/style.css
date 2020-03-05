@@ -180,3 +180,15 @@ li{
     font-size: .6rem;
     width: 100%;
 }
+.main_2_4 input {
+    width: 95%;
+    margin:5px;
+    padding: 4px;
+    font-size: .8rem;
+}
+.main_2_4 button {
+    background-color: #CC4D29;
+    color: white;
+    font-size: .6rem;
+    width: 100%;
+}
