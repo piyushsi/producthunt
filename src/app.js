@@ -18,9 +18,27 @@ class Content extends Component{
             "vote": 0,
             "type": "",
             "imgurl":"https://ph-files.imgix.net/719fe138-8598-46ec-8259-ef17ba46c0c2?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fit=crop"
-          }
+          },
+          fetch:{}
       }
     }
+   
+    componentDidMount() {
+      const link1="https://api.producthunt.com/v1/posts/all?sort_by=votes_count&order=desc&search[featured]=true&per_page=5"
+      const link2 = "https://api.producthunt.com/v2/api"
+      const token ="DeO-mptun35Ne4B2m83qX8WhqGs2EHwK665cbW1q6Mk";
+      fetch(link1, {headers:{
+        "Authorization":`Bearer ${token}`
+      }
+    })
+      .then(res=>
+        res.json())
+      .then(data=>
+          this.setState({fetch:data})
+        )
+      
+    }
+    
     
       handle= {
         handleChangeTitle: (e) => {
@@ -92,8 +110,8 @@ class Content extends Component{
           return <div>
         <Header/>
          <main className="main">
-            <Contents data={this.state.data} increment={this.increment}/>    
-             <Sidebar data={this.state} addProduct={this.addProduct} handle={this.handle}/>    
+            <Contents data={this.state.data} increment={this.increment} fetch={this.state.fetch}/>    
+            <Sidebar data={this.state} addProduct={this.addProduct} handle={this.handle}/>    
          </main>    
      </div>
         
